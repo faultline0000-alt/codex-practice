@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>차곡차곡 | 투자 복리수익 계산기</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <p class="eyebrow">차곡차곡 · COMPOUND INTEREST</p>
+      <h1>시간이 쌓이면,<br>자산도 자랍니다.</h1>
+      <p class="intro">나의 투자금이 만들어 갈 미래를 복리로 계산해 보세요.</p>
+    </header>
+    <div class="layout">
+      <section class="card inputs" aria-labelledby="input-title">
+        <h2 id="input-title">투자 계획</h2>
+        <p class="muted">세 가지 숫자로 시작하는 미래 계획</p>
+        <form id="calculator" novalidate>
+          <label for="principal">초기 투자금액 <span>원</span></label>
+          <input id="principal" name="principal" type="text" inputmode="numeric" value="10,000,000" aria-describedby="principal-hint error" required>
+          <small id="principal-hint">1원 ~ 1조 원 · 정수로 입력해 주세요.</small>
+          <label for="rate">연 수익률 <span>%</span></label>
+          <input id="rate" name="rate" type="text" inputmode="decimal" value="7" aria-describedby="rate-hint error" required>
+          <small id="rate-hint">-100% ~ 100% · 손실률도 계산할 수 있어요.</small>
+          <label for="years">투자기간 <span>년</span></label>
+          <input id="years" name="years" type="text" inputmode="numeric" value="10" aria-describedby="years-hint error" required>
+          <small id="years-hint">1년 ~ 100년 · 정수로 입력해 주세요.</small>
+          <p id="error" class="error" role="alert"></p>
+          <button type="submit">미래 자산 계산하기 <span aria-hidden="true">↗</span></button>
+        </form>
+      </section>
+      <section class="results" aria-labelledby="result-title">
+        <div class="summary" aria-live="polite" aria-atomic="true">
+          <p id="result-title">예상 최종 평가금액</p>
+          <h2 id="final-value">—</h2>
+          <p id="result-description"></p>
+          <div class="summary-detail"><span>초기 투자금액 <strong id="initial-value">—</strong></span><span>총 투자수익 <strong id="profit-value">—</strong></span></div>
+        </div>
+        <div class="card history">
+          <div class="section-heading"><h2>연도별 자산 흐름</h2><span>연 1회 복리</span></div>
+          <div class="table-scroll">
+            <table>
+              <caption class="sr-only">투자 시작 시점과 연도별 평가금액 및 누적 수익</caption>
+              <thead><tr><th scope="col">투자연차</th><th scope="col">평가금액</th><th scope="col">누적 수익</th></tr></thead>
+              <tbody id="yearly-results"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer>매년 같은 수익률로 수익을 재투자한다고 가정합니다. 추가 납입, 세금, 수수료, 물가 변동은 반영하지 않습니다.<br>계산 결과는 참고용이며 실제 투자수익을 보장하지 않습니다. 금액은 원 단위로 반올림합니다.</footer>
+  </main>
+</body>
+</html>
